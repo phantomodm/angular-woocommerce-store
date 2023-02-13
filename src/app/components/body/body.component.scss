@@ -1,0 +1,24 @@
+figcaption > span {
+  background-color: #3bb54a;
+  padding: 6px;
+  width: max-content;
+}
+
+.home-banner {
+  background-color: #f4f4f4;
+}
+
+.home-body {
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wp-caption {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 2.5em;
+  top: 0px;
+  text-decoration-line: none;
+}

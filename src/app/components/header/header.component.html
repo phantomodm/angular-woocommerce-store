@@ -1,0 +1,88 @@
+<div class="container-fluid">
+  <div id="top-bar" class="row bg-dark text-white top-bar">
+    <div class="col">{{siteConfig.topBarLeft}}</div>
+    <div class="col">{{siteConfig.topBarMiddle}}</div>
+    <div class="col">{{siteConfig.topBarRight}}</div>
+  </div>
+  <div id="secondary-navigation" class="row my-5">
+    <div id="site-logo" class="col site-logo">
+      <img src="../../../assets/images/shoptimizer_logo.png" alt="" />
+    </div>
+    <div id="search-bar" class="col">
+      <div class="mb3 d-flex">
+        <input type="search" class="form-control" id="searchBar" placeholder="Search for" />
+        <button class="btn btn-primary" type="button">Search</button>
+      </div>
+    </div>
+    <div id="secondary-nav-menu" class="col">
+      <ul class="list-group flex-row">
+        <div class="px-1">
+          <li class="d-flex flex-column">
+            <a href="" class="menu-link">
+              <div class="menu-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-person-circle" viewBox="0 0 16 16">
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                  <path fill-rule="evenodd"
+                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                </svg>
+              </div>
+              My Account
+            </a>
+          </li>
+        </div>
+        <div class="px-1">
+          <li class="d-flex flex-column">
+            <a href="" class="menu-link">
+              <div class="menu-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-question-circle" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                  <path
+                    d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+                </svg>
+              </div>
+              Customer Help
+            </a>
+          </li>
+        </div>
+        <div class="px-1">
+          <li class="d-flex flex-column">
+            <a href="" class="menu-link">
+              <div class="menu-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+                </svg>
+              </div>
+              Checkout
+            </a>
+          </li>
+        </div>
+
+      </ul>
+    </div>
+  </div>
+  <div id="main-navigation" class="row">
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+      <div class="container-fluid">
+        <a [routerLink]="['/']" class="navbar-brand">Shoptimizer</a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <ng-container *ngFor="let menu of siteConfig.mainNavMenu">
+            <li class="list-item">
+              <a [routerLink]="[menu.url]" class="nav-link" href="">{{menu.title}}</a>
+            </li>
+          </ng-container>
+        </ul>
+        <div id="cart-icon" class="m4">
+          <a href="" class="cart-content text-bg-dark text-decoration-none">
+            <span class="amount">$</span>
+            {{cartDetails?.total || "0.00"}}
+            <span class="count">{{cartDetails?.quantity || "0"}}</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>

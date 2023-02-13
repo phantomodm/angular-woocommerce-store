@@ -1,0 +1,65 @@
+<div id="address-autocomplete">
+  <div class="row">
+    <form [formGroup]="shipTo" class="address-autocomplete-form">
+      <div class="row">
+        <label for="" >Find Delivery Address</label>
+        <input type="text" class="form-control" #addressSearch formControlName='address_1'>
+      </div>
+      <ng-container *ngIf="checkoutMode">
+        <div class="row">
+          <div class="col">
+            <label for="">First Name</label>
+            <input class="form-control" type="text"formControlName="first_name">
+            <p *ngIf="firstName.errors?.['required'] && firstName.dirty">First name is required</p>
+          </div>
+          <div class="col">
+            <label for="">Last Name</label>
+            <input class="form-control" formControlName="last_name">
+            <p *ngIf="lastName.errors?.['required'] && lastName.dirty">Last name is required</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="">Apartment/Unit(Optional)</label>
+            <input class="form-control" formControlName="address_2">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="">City/Town</label>
+            <input class="form-control" formControlName="city">
+            <p class="hint" *ngIf="city.errors?.['required']">City is required.</p>
+          </div>
+          <div class="col">
+            <label for="">State</label>
+            <select class="form-select form-select-sm">
+              <option selected>State</option>
+              <option *ngFor="let state of states" value="{{state.alpha2}}">{{state.name}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <label for="">Postal Code</label>
+          <input class="form-control" formControlName="postcode">
+            <p class="hint" *ngIf="postcode.errors?.['required']">Zip is required.</p>
+        </div>
+        <div class="row">
+          <!-- *ngIf="geoLocation.country_code2 === 'US'; else selectCountry" -->
+          <ng-container>
+            Country: US
+            <!-- {{ geoLocation.country_code2 }} -->
+          </ng-container>
+        </div>
+        <ng-template #selectCountry>
+          <label for="">Country</label>
+          <select formControlName="country" value="us" id="" class="form-select form-select sm">
+            <option *ngFor="let country of countries" value="{{ country.alpha2 }}">{{ country.en }}</option>
+          </select>
+        </ng-template>
+      </ng-container>
+    </form>
+  </div>
+ </div>
+
+
+

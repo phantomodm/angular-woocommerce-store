@@ -1,0 +1,100 @@
+<div class="container" style="width: 1440px">
+  <main class="">
+  <section>
+    <div class="container" id="site-banner">
+      <div class="p-4 my-4 home-banner">
+        <div class="row">
+          <div class="col-6  p-4">
+            <h1>Up to 50% off!</h1>
+            <p class="h5">
+              Don't miss out on some very special items at <b>extraordinary</b> sale prices. For a limited time!
+            </p>
+            <button class="btn btn-primary btn-lg my-3">
+              Pick up a bargin
+            </button>
+            <p>With Code: SUMMERSALE</p>
+          </div>
+          <div class="col-6 ">
+            <img class="img-thumbnail" width = "1024" height="819"
+             src=" https://wooangularcourse.com/wp-content/uploads/2022/01/hero_girl_optimized.jpg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="home-body">
+    <div class="container-fluid" >
+      <div class="row">
+        <div class="col-4 position-relative d-flex p-4">
+          <div class="card">
+            <img src="https://wooangularcourse.com/wp-content/uploads/2022/01/home_feature_8.jpg" alt="" />
+            <div class="card-img-overlay">
+              <figure class="">
+                <a href="#" id="" class="text-line-through-none" aria-label="Men's Shirts"></a>
+                  <figcaption class="wp-caption text-white">
+                    <strong>Men's Shirts</strong>
+                    <em>from $40</em>
+                    <span>Shop Now</span>
+                  </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 position-relative d-flex p-4">
+          <div class="card">
+            <img src="https://wooangularcourse.com/wp-content/uploads/2022/01/home_feature_7a.jpg" alt="" />
+            <div class="card-img-overlay">
+              <figure class="">
+                <a href="#" id="" aria-label="Women's Style"></a>
+                  <figcaption class="wp-caption text-white">
+                    <strong>Women's Style</strong>
+                    <em>from $50</em>
+                    <span>Shop Now</span>
+                  </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 position-relative d-flex p-4">
+          <div class="card">
+            <img src="https://wooangularcourse.com/wp-content/uploads/2022/01/home_feature_5a.jpg" alt="" />
+            <div class="card-img-overlay">
+              <figure class="">
+                <a href="#" id="" aria-label="Winter Jackets"></a>
+                  <figcaption class="wp-caption text-white">
+                    <strong>Winter Jackets</strong>
+                    <em>from $60</em>
+                    <span>Shop Now</span>
+                  </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row text-center">
+      <h2>Our latest items</h2>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <ng-container *ngFor="let p of [1,2,3,4]; index as i;">
+        <div class="col-4" style="max-width: 269px">
+        <div class="card">
+          <img src="https://via.placeholder.com/269x269.png?text=Product{{i}}" alt="">
+        </div>
+        <div class="card-body">
+          <p class="card-subtitle text-uppercase">product category</p>
+          <h3 class="card-title">Product Name</h3>
+          <ng-container *ngIf="!!onSale; else regularPrice">$125</ng-container>
+          <ng-template #regularPrice>$150</ng-template>
+
+        </div>
+      </div>
+      </ng-container>
+
+    </div>
+  </section>
+
+</main>
+</div>
+

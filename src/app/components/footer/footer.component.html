@@ -1,0 +1,23 @@
+<div class="container-fluid bg-dark mt-4" id="site-footer">
+  <div class="row p-3 text-white">
+    <ng-container *ngFor="let f of siteConfig.footerLinks">
+      <div [ngClass]="f.style">
+        <ul class="list-group text-white">
+          {{f.title}}
+          <div style="margin-top: 10px">
+            <ng-container *ngIf="!!f.hasSublinks">
+              <ng-container *ngFor="let s of f.subLink">
+                <li class="list-item">
+                  <a [href]="s.url">{{s.title}}</a>
+                </li>
+              </ng-container>
+            </ng-container>
+          </div>
+        </ul>
+      </div>
+    </ng-container>
+
+    <div class="col">Enter Email Marketing Form</div>
+  </div>
+  <div class="copywright text-white">copyright info</div>
+</div>

@@ -1,0 +1,102 @@
+<div class="container-fluid">
+  <div class="row">
+    <ng-container *ngIf="!!successAddedToCart">
+      <div class="alert alert-success d-flex align-items-center" role="">
+        <i class="bi bi-check-circle-fill me-2"></i>
+        <div>{{product.name}} was added to cart successfully</div>
+        <button class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="resetNotification()"></button>
+      </div>
+    </ng-container>
+
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-7">
+      <div class="product-photo">
+        <img src="https://via.placeholder.com/600x600.png" alt="" class="img-fluid">
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-5">
+      <header>
+        <h1>{{product.name}}</h1>
+      </header>
+      <div class="category-badge">
+        <span class="badge rouded-pill bg-light text-dark"></span>
+      </div>
+      <div class="product-pricing">
+        <ng-container>
+          <ng-container *ngIf="!product.on_sale; else productOnSale;">
+            <p class="h6 regular-price"><span>$</span>{{price}} </p>
+          </ng-container>
+          <ng-template #productOnSale>
+            <p class="h6 ">On Sale<span class="sale-price"> ${{price}}</span></p>
+          </ng-template>
+        </ng-container>
+      </div>
+      <div class="short-description" [innerHTML]="product.short_description"></div>
+
+      <!-- Variation Products -->
+      <ng-container *ngIf="product.variation_data?.length">
+        <ng-container *ngFor="let variation of getAttributeOptions()">
+          <div class="col-sm-4 align-self-center">
+            <span>{{variation.name}}</span>
+          </div>
+          <ng-container *ngFor="let value of variation.option">
+            <button #attrBtn type="button" id="{{value}}" class=" m-2" [attr.data-value-id]="value"
+              (mouseover)="getStockByAttribute(variation.name, value)"
+              (click)="saveProductVariation({id: variation.id, name:variation.name, option: value})">
+              {{value}}
+            </button>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+
+
+      <div class="add-to-cart">
+        <div class="d-flex">
+          <div class="p-2 quatity-selector">
+            <select class="form-select" [value]="quantity" name="quantity" id="" #qtySelector
+              (change)="productQtyChanged()">
+              <option value="1">1</option>
+              <option value="2">2</option>
+            </select>
+          </div>
+          <div class="add-to-cart-button p-2 w-75">
+            <button class="btn btn-success w-100" role="button" (click)="addToCart(product)">
+              {{ !requireOptions ? 'Select Product Options' : 'Add to Cart'}}</button>
+          </div>
+        </div>
+      </div>
+      <!--Add to cart marketing-->
+      <app-add-to-cart-marketing></app-add-to-cart-marketing>
+      <!--Delivery Quote-->
+      <!-- <app-address-autocomplete></app-address-autocomplete> -->
+    </div>
+  </div>
+  <hr />
+  <div class="row m-4">
+    <div class="col-sm-12 col-md-8">
+      <div>
+        <ul class="nav nav-tabs" id="productDetail-tab" role="tablist">
+          <ng-container *ngFor="let tab of siteConfig.productPageTabs; index as i;">
+            <li class="nav-item" role="presentation">
+              <a [id]='tab.id + "-tab"' data-bs-toggle="tab" [attr.data-bs-target]='"#"+tab.id' type="button" role="tab"
+                [attr.aria-controls]="tab.id" [attr.aria-selected]="tab.ariaSelected" class="nav-link"
+                [ngClass]=" i < 1 ? 'active': '' ">{{tab.id}}</a>
+            </li>
+          </ng-container>
+        </ul>
+        <div class="tab-content" id="productDetailContent">
+          <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+            product description
+          </div>
+          <div class="tab-pane fade " id="product-info" role="tabpanel" aria-labelledby="product-info-tab">
+            TODO: product info
+          </div>
+          <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+            TODO: product reviews
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

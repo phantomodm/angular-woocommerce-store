@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "nys-custom-ui": {
+      "hosting": {
+        "angular-woocommerce-store": [
+          "nys-custom-ui"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "nys-custom-ui"
+  }
+}
